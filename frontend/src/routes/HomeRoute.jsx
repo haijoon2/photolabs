@@ -1,21 +1,14 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = ({
+  favorites,
+  handleToggleFavorite,
   handleOpenDetailsModal
 }) => {
-  const [favorites, setFavorites] = useState({});
-
-  const handleToggleFavorite = useCallback((photoId) => {
-    setFavorites((prev) => ({
-      ...prev,
-      [photoId]: !prev[photoId]
-    }));
-  }, []);
-
   const hasFavorite = useMemo(() => {
     const favoriteEntries = Object.entries(favorites)
       .filter(([_, isFavorite]) => isFavorite);

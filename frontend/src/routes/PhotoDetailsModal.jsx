@@ -8,7 +8,9 @@ import PhotoList from 'components/PhotoList';
 const PhotoDetailsModal = ({
   photoData,
   handleCloseDetailsModal,
-  isFavorite
+  handleToggleFavorite,
+  isFavorite,
+  favorites
 }) => {
   return (
     <div className="photo-details-modal">
@@ -22,6 +24,7 @@ const PhotoDetailsModal = ({
           <PhotoFavButton 
             id={photoData.id}
             isFavorite={isFavorite}
+            handleToggleFavorite={handleToggleFavorite}
           />
           <img
             src={photoData.urls.full}
@@ -41,7 +44,8 @@ const PhotoDetailsModal = ({
       </div>
       <div className="photo-details-modal__images">
         <PhotoList
-          favorites={{}}
+          favorites={favorites}
+          handleToggleFavorite={handleToggleFavorite}
         />
       </div>
     </div>

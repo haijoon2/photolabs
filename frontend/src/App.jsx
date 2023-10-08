@@ -6,18 +6,24 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const defaultDetailsModalProps = {
   photoData: undefined,
-  isFavorite: false,
   isOpen: false
 };
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const [detailsModalProps, setDetailsModalProps] = useState(defaultDetailsModalProps);
+  const [favorites, setFavorites] = useState({});
 
-  const handleOpenDetailsModal = useCallback((photoData, isFavorite) => {
+  const handleToggleFavorite = useCallback((photoId) => {
+    setFavorites((prev) => ({
+      ...prev,
+      [photoId]: !prev[photoId]
+    }));
+  }, []);
+
+  const handleOpenDetailsModal = useCallback((photoData) => {
     setDetailsModalProps({
       photoData,
-      isFavorite,
       isOpen: true
     });
   }, []);
@@ -28,12 +34,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <HomeRoute handleOpenDetailsModal={handleOpenDetailsModal} />
+      <HomeRoute
+        favorites={favorites}
+        handleToggleFavorite={handleToggleFavorite}
+        handleOpenDetailsModal={handleOpenDetailsModal} />
       {detailsModalProps.isOpen && (
         <PhotoDetailsModal
+          favorites={favorites}
+          handleToggleFavorite={handleToggleFavorite}
           handleCloseDetailsModal={handleCloseDetailsModal}
           photoData={detailsModalProps.photoData}
-          isFavorite={detailsModalProps.isFavorite}
+          isFavorite={favorites[detailsModalProps.photoData.id]}
         />
       )}
     </div>

@@ -4,7 +4,9 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = () => {
+const HomeRoute = ({
+  handleOpenDetailsModal
+}) => {
   const [favorites, setFavorites] = useState({});
 
   const handleToggleFavorite = useCallback((photoId) => {
@@ -29,6 +31,7 @@ const HomeRoute = () => {
       <PhotoList
         favorites={favorites}
         handleToggleFavorite={handleToggleFavorite}
+        handleOpenDetailsModal={handleOpenDetailsModal}
       />
     </div>
   );

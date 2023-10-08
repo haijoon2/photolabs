@@ -5,7 +5,8 @@ import photos from "mocks/photos";
 
 const PhotoList = ({
   favorites,
-  handleToggleFavorite
+  handleToggleFavorite,
+  handleOpenDetailsModal
 }) => {
   return (
     <ul className="photo-list">
@@ -15,6 +16,9 @@ const PhotoList = ({
           photoItem={photoItem}
           isFavorite={favorites[photoItem.id]}
           handleToggleFavorite={handleToggleFavorite}
+          handleOpenDetailsModal={() => {
+            handleOpenDetailsModal(photoItem.id);
+          }}
         />
       ))}
     </ul>

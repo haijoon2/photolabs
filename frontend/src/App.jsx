@@ -6,6 +6,7 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const defaultDetailsModalProps = {
   photoData: undefined,
+  isFavorite: false,
   isOpen: false
 };
 
@@ -13,9 +14,10 @@ const defaultDetailsModalProps = {
 const App = () => {
   const [detailsModalProps, setDetailsModalProps] = useState(defaultDetailsModalProps);
 
-  const handleOpenDetailsModal = useCallback((photoData) => {
+  const handleOpenDetailsModal = useCallback((photoData, isFavorite) => {
     setDetailsModalProps({
       photoData,
+      isFavorite,
       isOpen: true
     });
   }, []);
@@ -31,6 +33,7 @@ const App = () => {
         <PhotoDetailsModal
           handleCloseDetailsModal={handleCloseDetailsModal}
           photoData={detailsModalProps.photoData}
+          isFavorite={detailsModalProps.isFavorite}
         />
       )}
     </div>

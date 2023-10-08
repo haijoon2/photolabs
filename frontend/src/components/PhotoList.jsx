@@ -17,7 +17,7 @@ const PhotoList = ({
           isFavorite={favorites[photoItem.id]}
           handleToggleFavorite={handleToggleFavorite}
           handleOpenDetailsModal={() => {
-            handleOpenDetailsModal(photoItem);
+            handleOpenDetailsModal(photoItem, favorites[photoItem.id]);
           }}
         />
       ))}

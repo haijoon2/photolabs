@@ -8,7 +8,8 @@ const PhotoFavButton = ({ id, isFavorite, handleToggleFavorite }) => {
     <div className="photo-list__fav-icon">
       <div
         className="photo-list__fav-icon-svg"
-        onClick={() => {
+        onClick={(event) => {
+          event.stopPropagation();
           handleToggleFavorite(id);
         }}  
       >

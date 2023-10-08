@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
@@ -11,12 +11,21 @@ const HomeRoute = () => {
     setFavorites((prev) => ({
       ...prev,
       [photoId]: !prev[photoId]
-    }))
-  }, [])
+    }));
+  }, []);
+
+  const hasFavorite = useMemo(() => {
+    const favoriteEntries = Object.entries(favorites)
+      .filter(([_, isFavorite]) => isFavorite);
+
+    return favoriteEntries.length > 0;    
+  }, [favorites])
 
   return (
     <div className="home-route">
-      <TopNavigation />
+      <TopNavigation
+        hasFavorite={hasFavorite}
+      />
       <PhotoList
         favorites={favorites}
         handleToggleFavorite={handleToggleFavorite}

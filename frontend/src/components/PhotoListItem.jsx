@@ -1,10 +1,12 @@
 import React from "react";
+import PhotoFavButton from "./PhotoFavButton";
 
 import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = ({ sampleDataForPhotoListItem }) => {
   return (
     <div className="photo-list__item">
+      <PhotoFavButton id={sampleDataForPhotoListItem.id} />
       <img className="photo-list__image" src={sampleDataForPhotoListItem.imageSource} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={sampleDataForPhotoListItem.profile} />

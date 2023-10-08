@@ -5,7 +5,7 @@ import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 const defaultDetailsModalProps = {
-  photoId: undefined,
+  photoData: undefined,
   isOpen: false
 };
 
@@ -13,9 +13,9 @@ const defaultDetailsModalProps = {
 const App = () => {
   const [detailsModalProps, setDetailsModalProps] = useState(defaultDetailsModalProps);
 
-  const handleOpenDetailsModal = useCallback((photoId) => {
+  const handleOpenDetailsModal = useCallback((photoData) => {
     setDetailsModalProps({
-      photoId,
+      photoData,
       isOpen: true
     });
   }, []);
@@ -30,7 +30,7 @@ const App = () => {
       {detailsModalProps.isOpen && (
         <PhotoDetailsModal
           handleCloseDetailsModal={handleCloseDetailsModal}
-          modalProps={detailsModalProps}
+          photoData={detailsModalProps.photoData}
         />
       )}
     </div>

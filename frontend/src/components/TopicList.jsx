@@ -13,7 +13,7 @@ const TopicList = ({
         <TopicListItem
           key={topic.id}
           title={topic.title}
-          handleClick={() => {
+          onClickTopic={() => {
             handleFetchPhotosByTopic(topic.id);
           }}
         />

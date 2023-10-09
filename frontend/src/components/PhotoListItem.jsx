@@ -6,18 +6,18 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = ({
   photo, 
   selected, 
-  handleToggleFavorite,
-  handleOpenDetailsModal
+  onClickFavoriteIcon,
+  onClickPhoto
 }) => {
   return (
     <div
       className="photo-list__item"
-      onClick={handleOpenDetailsModal}
+      onClick={onClickPhoto}
     >
       <PhotoFavButton
         id={photo.id}
         selected={selected}
-        handleToggleFavorite={handleToggleFavorite}  
+        onClickFavoriteIcon={onClickFavoriteIcon}  
       />
       <img
         className="photo-list__image"

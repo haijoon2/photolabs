@@ -54,6 +54,7 @@ const PhotoDetailsModal = ({
             photos={selectedPhoto.similar_photos}
             favorites={favorites}
             handleToggleFavorite={handleToggleFavorite}
+            disableDetailsModalOpen
           />
         </div>
       </div>

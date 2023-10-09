@@ -7,10 +7,10 @@ const noop = () => {};
 const PhotoList = ({
   photos,
   favorites,
+  // prevents onClick related photos when on details modal
+  disableDetailsModalOpen,
   handleToggleFavorite,
-  // handleOpenDetailsModal will be undefined when
-  // PhotoList is rendered within PhotoDetailsModal
-  handleOpenDetailsModal = noop
+  handleOpenDetailsModal
 }) => {
   return (
     <ul className="photo-list">
@@ -19,12 +19,14 @@ const PhotoList = ({
           key={index}
           photo={photo}
           selected={favorites[photo.id]}
-          handleToggleFavorite={(event) => {
+          onClickFavoriteIcon={(event) => {
             event.stopPropagation()
             handleToggleFavorite(photo.id);
           }}
-          handleOpenDetailsModal={() => {
-            handleOpenDetailsModal(photo);
+          onClickPhoto={() => {
+            if (!disableDetailsModalOpen) {
+              handleOpenDetailsModal(photo);
+            }
           }}
         />
       ))}

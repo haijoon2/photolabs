@@ -33,11 +33,16 @@ const PhotoDetailsModal = ({
               className="photo-details-modal__image"
             />
             <div className="photo-details-modal__photographer-details">
-              <img className="photo-details-modal__photographer-profile" src={selectedPhoto.user.profile} />
+              <img
+                className="photo-details-modal__photographer-profile"
+                src={selectedPhoto.user.profile}
+              />
               <div className="photo-details-modal__photographer-info">
                 {selectedPhoto.user.name}
                 <br />
-                <span className="photo-details-modal__photographer-location">{selectedPhoto.location.city}, {selectedPhoto.location.country}</span>
+                <span className="photo-details-modal__photographer-location">
+                  {selectedPhoto.location.city}, {selectedPhoto.location.country}
+                </span>
               </div>
             </div>
             <br />

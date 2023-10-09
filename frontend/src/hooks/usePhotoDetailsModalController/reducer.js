@@ -18,7 +18,7 @@ export const reducer = (state, action) => {
     }
 
     case CLOSE_PHOTO_DETAILS_MODAL: {
-      nextState.selectedPhotoId = null;
+      nextState.selectedPhoto = null;
       nextState.isDetailsModalOpen = false;
 
       break;

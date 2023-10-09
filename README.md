@@ -5,10 +5,9 @@ The PhotoLabs project for the Web Development React course programming.
 Build a client-side application using the React view-layer library.
 
 ## Screenshots
-- landing Page <img src="screenshot/PhotoLabs.png">
-- Travel Page<img src="screenshot/PhotoLabs Travel.png">
-- Modal <img src="screenshot/PhotoLabs Modal.png">
-
+- landing Page <img src="docs/PhotoLabs.png">
+- Travel Page<img src="docs/PhotoLabs Travel.png">
+- Modal <img src="docs/PhotoLabs Modal.png">
 
 ## Setup
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.

@@ -32,7 +32,7 @@ const PhotoDetailsModal = ({
             <PhotoFavButton 
               id={id}
               selected={favorites[id]}
-              handleToggleFavorite={() => {
+              onClickFavoriteIcon={() => {
                 handleToggleFavorite(id);
               }}
             />

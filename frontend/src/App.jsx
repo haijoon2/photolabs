@@ -7,6 +7,7 @@ import { useApplicationData, usePhotoDetailsModalController } from 'hooks';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
+  /* -------------------------------- App data -------------------------------- */
   const {
     favorites,
     photos,
@@ -14,6 +15,8 @@ const App = () => {
     toggleFavoriteAction,
     fetchPhotosByTopicAction
   } = useApplicationData();
+
+  /* ------------------------ Details modal controller ------------------------ */
   const {
     selectedPhoto,
     isDetailsModalOpen,
@@ -34,9 +37,9 @@ const App = () => {
       {isDetailsModalOpen && selectedPhoto && (
         <PhotoDetailsModal
           favorites={favorites}
+          selectedPhoto={selectedPhoto}
           handleToggleFavorite={toggleFavoriteAction}
           handleCloseDetailsModal={closePhotoDetailsModalAction}
-          selectedPhoto={selectedPhoto}
         />
       )}
     </div>

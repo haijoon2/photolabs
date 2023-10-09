@@ -12,12 +12,10 @@ const HomeRoute = ({
   handleOpenDetailsModal,
   handleFetchPhotosByTopic,
 }) => {
-  const hasFavorite = useMemo(() => {
-    const favoriteEntries = Object.entries(favorites)
-      .filter(([_, isFavorite]) => isFavorite);
-
-    return favoriteEntries.length > 0;    
-  }, [favorites])
+  const hasFavorite = useMemo(
+    () => Object.entries(favorites).some(([_, isFavorite]) => isFavorite),
+    [favorites]
+  );
 
   return (
     <div className="home-route">

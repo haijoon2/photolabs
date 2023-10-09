@@ -6,7 +6,7 @@ import {
   SET_TOPIC_DATA,
   API_URL_PHOTOS,
   API_URL_TOPICS,
-  API_URL_PHOTOS_BY_TOPIC
+  API_URL_PHOTOS_BY_TOPIC_BASE
 } from './constants'
 
 const defaultState = {
@@ -42,7 +42,7 @@ export const useApplicationData = () => {
   }, [dispatch]);
 
   const fetchPhotosByTopicAction = useCallback((topicId) => {
-    fetch(`${API_URL_PHOTOS_BY_TOPIC}/${topicId}`)
+    fetch(`${API_URL_PHOTOS_BY_TOPIC_BASE}/${topicId}`)
       .then((response) => response.json())
       .then(setPhotoDataAction);
   }, [dispatch]);

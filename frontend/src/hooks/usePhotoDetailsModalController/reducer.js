@@ -24,7 +24,11 @@ export const reducer = (state, action) => {
       break;
     }
 
-    default:
+    default: {
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${type}`
+      );
+    }
   }
 
   return nextState;

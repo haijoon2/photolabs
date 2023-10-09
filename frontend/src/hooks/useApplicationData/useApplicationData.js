@@ -29,7 +29,6 @@ export const useApplicationData = () => {
       payload: { photoId }
     });
   }, []);
-  /* ------------------------------------ - ----------------------------------- */
 
   /* ---------------------------- Initial data load --------------------------- */
   useEffect(() => {
@@ -52,6 +51,7 @@ export const useApplicationData = () => {
     favorites,
     photoData,
     topicData,
+
     // actions
     toggleFavoriteAction
   };

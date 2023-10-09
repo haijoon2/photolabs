@@ -29,12 +29,12 @@ export const usePhotoDetailsModalController = () => {
       type: CLOSE_PHOTO_DETAILS_MODAL
     });
   }, []);
-  /* ------------------------------------ - ----------------------------------- */
   
   return {
     // state
     selectedPhoto,
     isDetailsModalOpen,
+
     // actions
     openPhotoDetailsModalAction,
     closePhotoDetailsModalAction

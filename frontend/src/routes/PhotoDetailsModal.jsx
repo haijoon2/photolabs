@@ -11,6 +11,14 @@ const PhotoDetailsModal = ({
   handleCloseDetailsModal,
   handleToggleFavorite
 }) => {
+  const {
+    id,
+    urls,
+    user,
+    location,
+    similar_photos
+  } = selectedPhoto;
+
   return (
     <div className="photo-details-modal-background">
       <div className="photo-details-modal">
@@ -22,26 +30,26 @@ const PhotoDetailsModal = ({
         <div className="photo-details-modal__top-bar">
           <header className="photo-details-modal__header">
             <PhotoFavButton 
-              id={selectedPhoto.id}
-              selected={favorites[selectedPhoto.id]}
+              id={id}
+              selected={favorites[id]}
               handleToggleFavorite={() => {
-                handleToggleFavorite(selectedPhoto.id);
+                handleToggleFavorite(id);
               }}
             />
             <img
-              src={selectedPhoto.urls.full}
+              src={urls.full}
               className="photo-details-modal__image"
             />
             <div className="photo-details-modal__photographer-details">
               <img
                 className="photo-details-modal__photographer-profile"
-                src={selectedPhoto.user.profile}
+                src={user.profile}
               />
               <div className="photo-details-modal__photographer-info">
-                {selectedPhoto.user.name}
+                {user.name}
                 <br />
                 <span className="photo-details-modal__photographer-location">
-                  {selectedPhoto.location.city}, {selectedPhoto.location.country}
+                  {location.city}, {location.country}
                 </span>
               </div>
             </div>
@@ -51,7 +59,7 @@ const PhotoDetailsModal = ({
         </div>
         <div className="photo-details-modal__images">
           <PhotoList
-            photos={selectedPhoto.similar_photos}
+            photos={similar_photos}
             favorites={favorites}
             handleToggleFavorite={handleToggleFavorite}
             disableDetailsModalOpen

@@ -14,14 +14,14 @@ const PhotoList = ({
 }) => {
   return (
     <ul className="photo-list">
-      {photos.map((photoItem, index) => (
+      {photos.map((photo, index) => (
         <PhotoListItem
           key={index}
-          photoItem={photoItem}
-          isFavorite={favorites[photoItem.id]}
+          photo={photo}
+          isFavorite={favorites[photo.id]}
           handleToggleFavorite={handleToggleFavorite}
           handleOpenDetailsModal={() => {
-            handleOpenDetailsModal(photoItem);
+            handleOpenDetailsModal(photo);
           }}
         />
       ))}

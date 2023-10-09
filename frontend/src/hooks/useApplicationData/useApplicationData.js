@@ -10,14 +10,14 @@ import {
 } from './constants'
 
 const defaultState = {
-  photoData: [],
-  topicData: [],
+  photos: [],
+  topics: [],
   favorites: {}
 };
 
 export const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
-  const { photoData, topicData, favorites } = state;
+  const { photos, topics, favorites } = state;
   
   /* --------------------------------- Actions -------------------------------- */
   const toggleFavoriteAction = useCallback((photoId) => {
@@ -27,17 +27,17 @@ export const useApplicationData = () => {
     });
   }, [dispatch]);
 
-  const setPhotoDataAction = useCallback((photoData) => {
+  const setPhotoDataAction = useCallback((photos) => {
     dispatch({
       type: SET_PHOTO_DATA,
-      payload: { photoData }
+      payload: { photos }
     });
   }, [dispatch]);
 
-  const setTopicDataAction = useCallback((topicData) => {
+  const setTopicDataAction = useCallback((topics) => {
     dispatch({
       type: SET_TOPIC_DATA,
-      payload: { topicData }
+      payload: { topics }
     });  
   }, [dispatch]);
 
@@ -66,8 +66,8 @@ export const useApplicationData = () => {
   return {
     // state
     favorites,
-    photoData,
-    topicData,
+    photos,
+    topics,
 
     // actions
     toggleFavoriteAction,

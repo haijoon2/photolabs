@@ -9,8 +9,8 @@ import { useApplicationData, usePhotoDetailsModalController } from 'hooks';
 const App = () => {
   const {
     favorites,
-    photoData,
-    topicData,
+    photos,
+    topics,
     toggleFavoriteAction,
     fetchPhotosByTopicAction
   } = useApplicationData();
@@ -24,8 +24,8 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        photos={photoData}
-        topics={topicData}
+        photos={photos}
+        topics={topics}
         favorites={favorites}
         handleToggleFavorite={toggleFavoriteAction}
         handleOpenDetailsModal={openPhotoDetailsModalAction}

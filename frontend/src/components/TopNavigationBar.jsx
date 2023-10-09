@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/TopNavigationBar.scss'
 import TopicList from './TopicList';
-import FavIcon from './FavIcon';
+import FavBadge from './FavBadge';
 
 const TopNavigation = ({
   topics,
@@ -16,7 +16,7 @@ const TopNavigation = ({
         topics={topics}
         handleFetchPhotosByTopic={handleFetchPhotosByTopic}
       />
-      <FavIcon selected displayAlert={hasFavorite} />
+      <FavBadge selected displayAlert={hasFavorite} />
     </div>
   )
 }

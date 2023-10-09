@@ -7,9 +7,9 @@ import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
   selectedPhoto,
+  favorites,
   handleCloseDetailsModal,
-  handleToggleFavorite,
-  favorites
+  handleToggleFavorite
 }) => {
   return (
     <div className="photo-details-modal">

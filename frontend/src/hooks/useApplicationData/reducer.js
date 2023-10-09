@@ -24,14 +24,14 @@ export const reducer = (state, action) => {
 
     /* ------------------------------ Storing data ------------------------------ */
     case SET_PHOTO_DATA: {
-      const { photoData } = payload;
-      nextState.photoData = photoData;
+      const { photos } = payload;
+      nextState.photos = photos;
 
       break;
     }
     case SET_TOPIC_DATA: {
-      const { topicData } = payload;
-      nextState.topicData = topicData;
+      const { topics } = payload;
+      nextState.topics = topics;
 
       break;
     }

@@ -3,17 +3,14 @@ import React from 'react';
 import FavBadge from './FavBadge';
 import '../styles/PhotoFavButton.scss';
 
-const PhotoFavButton = ({ id, isFavorite, handleToggleFavorite }) => {
+const PhotoFavButton = ({ selected, handleToggleFavorite }) => {
   return (
     <div className="photo-list__fav-icon">
       <div
         className="photo-list__fav-icon-svg"
-        onClick={(event) => {
-          event.stopPropagation();
-          handleToggleFavorite(id);
-        }}  
+        onClick={handleToggleFavorite}  
       >
-        <FavBadge selected={isFavorite} />
+        <FavBadge selected={selected} />
       </div>
     </div>
   );

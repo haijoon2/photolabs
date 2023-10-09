@@ -5,7 +5,7 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = ({
   photo, 
-  isFavorite, 
+  selected, 
   handleToggleFavorite,
   handleOpenDetailsModal
 }) => {
@@ -13,7 +13,7 @@ const PhotoListItem = ({
     <div className="photo-list__item" onClick={handleOpenDetailsModal}>
       <PhotoFavButton
         id={photo.id}
-        isFavorite={isFavorite}
+        selected={selected}
         handleToggleFavorite={handleToggleFavorite}  
       />
       <img className="photo-list__image" src={photo.urls.regular} />

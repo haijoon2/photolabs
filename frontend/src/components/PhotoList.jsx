@@ -18,8 +18,11 @@ const PhotoList = ({
         <PhotoListItem
           key={index}
           photo={photo}
-          isFavorite={favorites[photo.id]}
-          handleToggleFavorite={handleToggleFavorite}
+          selected={favorites[photo.id]}
+          handleToggleFavorite={(event) => {
+            event.stopPropagation()
+            handleToggleFavorite(photo.id);
+          }}
           handleOpenDetailsModal={() => {
             handleOpenDetailsModal(photo);
           }}

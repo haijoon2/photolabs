@@ -1,33 +1,40 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import './App.scss';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
-import { useApplicationData } from 'hooks/useApplicationData';
+import { useApplicationData, usePhotoDetailsModalController } from 'hooks';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
   const {
     favorites,
-    detailsModalProps,
-    handleToggleFavorite,
-    handleOpenDetailsModal,
-    handleCloseDetailsModal
+    photoData,
+    topicData,
+    toggleFavoriteAction
   } = useApplicationData();
+  const {
+    selectedPhoto,
+    isDetailsModalOpen,
+    openPhotoDetailsModalAction,
+    closePhotoDetailsModalAction
+  } = usePhotoDetailsModalController();
 
   return (
     <div className="App">
       <HomeRoute
+        photos={photoData}
+        topics={topicData}
         favorites={favorites}
-        handleToggleFavorite={handleToggleFavorite}
-        handleOpenDetailsModal={handleOpenDetailsModal} />
-      {detailsModalProps.isOpen && (
+        handleToggleFavorite={toggleFavoriteAction}
+        handleOpenDetailsModal={openPhotoDetailsModalAction} />
+      {isDetailsModalOpen && selectedPhoto && (
         <PhotoDetailsModal
+          photos={photoData}
           favorites={favorites}
-          handleToggleFavorite={handleToggleFavorite}
-          handleCloseDetailsModal={handleCloseDetailsModal}
-          photoData={detailsModalProps.photoData}
-          isFavorite={favorites[detailsModalProps.photoData.id]}
+          handleToggleFavorite={toggleFavoriteAction}
+          handleCloseDetailsModal={closePhotoDetailsModalAction}
+          selectedPhoto={selectedPhoto}
         />
       )}
     </div>

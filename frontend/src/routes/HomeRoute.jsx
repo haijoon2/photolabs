@@ -5,6 +5,8 @@ import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
 const HomeRoute = ({
+  photos,
+  topics,
   favorites,
   handleToggleFavorite,
   handleOpenDetailsModal
@@ -19,9 +21,11 @@ const HomeRoute = ({
   return (
     <div className="home-route">
       <TopNavigation
+        topics={topics}
         hasFavorite={hasFavorite}
       />
       <PhotoList
+        photos={photos}
         favorites={favorites}
         handleToggleFavorite={handleToggleFavorite}
         handleOpenDetailsModal={handleOpenDetailsModal}

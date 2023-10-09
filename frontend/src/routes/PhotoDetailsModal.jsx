@@ -6,10 +6,10 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
-  photoData,
+  photos,
+  selectedPhoto,
   handleCloseDetailsModal,
   handleToggleFavorite,
-  isFavorite,
   favorites
 }) => {
   return (
@@ -22,20 +22,20 @@ const PhotoDetailsModal = ({
       <div className="photo-details-modal__top-bar">
         <header className="photo-details-modal__header">
           <PhotoFavButton 
-            id={photoData.id}
-            isFavorite={isFavorite}
+            id={selectedPhoto.id}
+            isFavorite={favorites[selectedPhoto.id]}
             handleToggleFavorite={handleToggleFavorite}
           />
           <img
-            src={photoData.urls.full}
+            src={selectedPhoto.urls.full}
             className="photo-details-modal__image"
           />
           <div className="photo-details-modal__photographer-details">
-            <img className="photo-details-modal__photographer-profile" src={photoData.user.profile} />
+            <img className="photo-details-modal__photographer-profile" src={selectedPhoto.user.profile} />
             <div className="photo-details-modal__photographer-info">
-              {photoData.user.name}
+              {selectedPhoto.user.name}
               <br />
-              <span className="photo-details-modal__photographer-location">{photoData.location.city}, {photoData.location.country}</span>
+              <span className="photo-details-modal__photographer-location">{selectedPhoto.location.city}, {selectedPhoto.location.country}</span>
             </div>
           </div>
           <br />
@@ -44,6 +44,7 @@ const PhotoDetailsModal = ({
       </div>
       <div className="photo-details-modal__images">
         <PhotoList
+          photos={photos}
           favorites={favorites}
           handleToggleFavorite={handleToggleFavorite}
         />

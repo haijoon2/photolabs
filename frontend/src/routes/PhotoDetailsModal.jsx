@@ -6,7 +6,6 @@ import PhotoFavButton from 'components/PhotoFavButton';
 import PhotoList from 'components/PhotoList';
 
 const PhotoDetailsModal = ({
-  photos,
   selectedPhoto,
   handleCloseDetailsModal,
   handleToggleFavorite,
@@ -44,7 +43,7 @@ const PhotoDetailsModal = ({
       </div>
       <div className="photo-details-modal__images">
         <PhotoList
-          photos={photos}
+          photos={selectedPhoto.similar_photos}
           favorites={favorites}
           handleToggleFavorite={handleToggleFavorite}
         />

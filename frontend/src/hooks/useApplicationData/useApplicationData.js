@@ -44,21 +44,24 @@ export const useApplicationData = () => {
   const fetchPhotosByTopicAction = useCallback((topicId) => {
     fetch(`${API_URL_PHOTOS_BY_TOPIC_BASE}/${topicId}`)
       .then((response) => response.json())
-      .then(setPhotoDataAction);
-  }, [dispatch]);
+      .then(setPhotoDataAction)
+      .catch((error) => { console.error(error) });
+  }, [dispatch, setPhotoDataAction]);
 
   /* -------------------------- Initial data fetching ------------------------- */
   useEffect(() => {
     fetch(API_URL_PHOTOS)
       .then((response) => response.json())
-      .then(setPhotoDataAction);
-  }, [dispatch]);
+      .then(setPhotoDataAction)
+      .catch((error) => { console.error(error) });
+  }, [dispatch, setPhotoDataAction]);
 
   useEffect(() => {
     fetch(API_URL_TOPICS)
       .then((response) => response.json())
       .then(setTopicDataAction)
-  }, [dispatch]);
+      .catch((error) => { console.error(error) });
+  }, [dispatch, setTopicDataAction]);
   
   return {
     // state

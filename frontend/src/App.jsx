@@ -33,7 +33,6 @@ const App = () => {
       />
       {isDetailsModalOpen && selectedPhoto && (
         <PhotoDetailsModal
-          photos={photoData}
           favorites={favorites}
           handleToggleFavorite={toggleFavoriteAction}
           handleCloseDetailsModal={closePhotoDetailsModalAction}

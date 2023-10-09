@@ -11,7 +11,8 @@ const App = () => {
     favorites,
     photoData,
     topicData,
-    toggleFavoriteAction
+    toggleFavoriteAction,
+    fetchPhotosByTopicAction
   } = useApplicationData();
   const {
     selectedPhoto,
@@ -27,7 +28,9 @@ const App = () => {
         topics={topicData}
         favorites={favorites}
         handleToggleFavorite={toggleFavoriteAction}
-        handleOpenDetailsModal={openPhotoDetailsModalAction} />
+        handleOpenDetailsModal={openPhotoDetailsModalAction}
+        handleFetchPhotosByTopic={fetchPhotosByTopicAction}
+      />
       {isDetailsModalOpen && selectedPhoto && (
         <PhotoDetailsModal
           photos={photoData}

@@ -9,7 +9,8 @@ const HomeRoute = ({
   topics,
   favorites,
   handleToggleFavorite,
-  handleOpenDetailsModal
+  handleOpenDetailsModal,
+  handleFetchPhotosByTopic,
 }) => {
   const hasFavorite = useMemo(() => {
     const favoriteEntries = Object.entries(favorites)
@@ -23,6 +24,7 @@ const HomeRoute = ({
       <TopNavigation
         topics={topics}
         hasFavorite={hasFavorite}
+        handleFetchPhotosByTopic={handleFetchPhotosByTopic}
       />
       <PhotoList
         photos={photos}

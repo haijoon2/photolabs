@@ -9,6 +9,7 @@ export const reducer = (state, action) => {
   const nextState = { ...state };
 
   switch (type) {
+    /* ---------------------------- Toggle favorites ---------------------------- */
     case TOGGLE_PHOTO_FAVORITE: {
       const { photoId } = payload;
       const previousFavoriteState = !!state.favorites[photoId];
@@ -21,13 +22,13 @@ export const reducer = (state, action) => {
       break;
     }
 
+    /* ------------------------------ Storing data ------------------------------ */
     case SET_PHOTO_DATA: {
       const { photoData } = payload;
       nextState.photoData = photoData;
 
       break;
     }
-
     case SET_TOPIC_DATA: {
       const { topicData } = payload;
       nextState.topicData = topicData;

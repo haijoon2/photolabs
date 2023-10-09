@@ -3,10 +3,11 @@ import { reducer } from './reducer';
 import {
   TOGGLE_PHOTO_FAVORITE,
   SET_PHOTO_DATA,
-  SET_TOPIC_DATA
+  SET_TOPIC_DATA,
+  API_URL_PHOTOS,
+  API_URL_TOPICS,
+  API_URL_PHOTOS_BY_TOPIC
 } from './constants'
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
 
 const defaultState = {
   photoData: [],
@@ -15,36 +16,49 @@ const defaultState = {
 };
 
 export const useApplicationData = () => {
-  const [{
-    photoData,
-    topicData,
-    favorites
-  }, dispatch] = useReducer(reducer, defaultState);
-
+  const [state, dispatch] = useReducer(reducer, defaultState);
+  const { photoData, topicData, favorites } = state;
   
-  /* ----------------------------- Action creators ---------------------------- */
+  /* --------------------------------- Actions -------------------------------- */
   const toggleFavoriteAction = useCallback((photoId) => {
     dispatch({
       type: TOGGLE_PHOTO_FAVORITE,
       payload: { photoId }
     });
-  }, []);
+  }, [dispatch]);
 
-  /* ---------------------------- Initial data load --------------------------- */
-  useEffect(() => {
+  const setPhotoDataAction = useCallback((photoData) => {
     dispatch({
       type: SET_PHOTO_DATA,
-      payload: { photoData: photos }
+      payload: { photoData }
     });
-  }, []);
+  }, [dispatch]);
 
-  useEffect(() => {
+  const setTopicDataAction = useCallback((topicData) => {
     dispatch({
       type: SET_TOPIC_DATA,
-      payload: { topicData: topics }
-    });
-  }, []);
+      payload: { topicData }
+    });  
+  }, [dispatch]);
 
+  const fetchPhotosByTopicAction = useCallback((topicId) => {
+    fetch(`${API_URL_PHOTOS_BY_TOPIC}/${topicId}`)
+      .then((response) => response.json())
+      .then(setPhotoDataAction);
+  }, [dispatch]);
+
+  /* -------------------------- Initial data fetching ------------------------- */
+  useEffect(() => {
+    fetch(API_URL_PHOTOS)
+      .then((response) => response.json())
+      .then(setPhotoDataAction);
+  }, [dispatch]);
+
+  useEffect(() => {
+    fetch(API_URL_TOPICS)
+      .then((response) => response.json())
+      .then(setTopicDataAction)
+  }, [dispatch]);
   
   return {
     // state
@@ -53,6 +67,7 @@ export const useApplicationData = () => {
     topicData,
 
     // actions
-    toggleFavoriteAction
+    toggleFavoriteAction,
+    fetchPhotosByTopicAction
   };
 }

@@ -16,19 +16,19 @@ export const usePhotoDetailsModalController = () => {
     isDetailsModalOpen
   }, dispatch] = useReducer(reducer, defaultState);
 
-  /* ----------------------------- Action creators ---------------------------- */
+  /* --------------------------------- Actions -------------------------------- */
   const openPhotoDetailsModalAction = useCallback((selectedPhoto) => {
     dispatch({
       type: OPEN_PHOTO_DETAILS_MODAL,
       payload: { selectedPhoto }
     });
-  }, []);
+  }, [dispatch]);
 
   const closePhotoDetailsModalAction = useCallback(() => {
     dispatch({
       type: CLOSE_PHOTO_DETAILS_MODAL
     });
-  }, []);
+  }, [dispatch]);
   
   return {
     // state

@@ -6,7 +6,10 @@ import FavBadge from './FavBadge';
 import { useAppContext } from 'AppContextProvider';
 
 const TopNavigation = () => {
-  const { favorites } = useAppContext();
+  const {
+    favorites,
+    openFavoritesModalAction
+  } = useAppContext();
 
   const hasFavorite = useMemo(
     () => Object.entries(favorites).some(([_, isFavorite]) => isFavorite),
@@ -22,6 +25,7 @@ const TopNavigation = () => {
       <FavBadge
         selected
         displayAlert={hasFavorite}
+        onToggleFavIcon={openFavoritesModalAction}
       />
     </div>
   )

@@ -2,18 +2,22 @@ import { useCallback, useReducer } from 'react';
 import { reducer } from './reducer';
 import {
   OPEN_PHOTO_DETAILS_MODAL,
-  CLOSE_PHOTO_DETAILS_MODAL
+  CLOSE_PHOTO_DETAILS_MODAL,
+  OPEN_FAVORITES_MODAL,
+  CLOSE_FAVORITES_MODAL
 } from './constants'
 
 const defaultState = {
   selectedPhoto: null,
-  isDetailsModalOpen: false
+  isDetailsModalOpen: false,
+  isFavoritesModalOpen: false
 };
 
-export const usePhotoDetailsModalController = () => {
+export const useModalControllers = () => {
   const [{
     selectedPhoto,
-    isDetailsModalOpen
+    isDetailsModalOpen,
+    isFavoritesModalOpen
   }, dispatch] = useReducer(reducer, defaultState);
 
   /* --------------------------------- Actions -------------------------------- */
@@ -29,14 +33,29 @@ export const usePhotoDetailsModalController = () => {
       type: CLOSE_PHOTO_DETAILS_MODAL
     });
   }, [dispatch]);
+
+  const openFavoritesModalAction = useCallback(() => {
+    dispatch({
+      type: OPEN_FAVORITES_MODAL
+    });
+  }, [dispatch]);
+
+  const closeFavoritesModalAction = useCallback(() => {
+    dispatch({
+      type: CLOSE_FAVORITES_MODAL
+    });
+  }, [dispatch]);
   
   return {
     // state
     selectedPhoto,
     isDetailsModalOpen,
+    isFavoritesModalOpen,
 
     // actions
     openPhotoDetailsModalAction,
-    closePhotoDetailsModalAction
+    closePhotoDetailsModalAction,
+    openFavoritesModalAction,
+    closeFavoritesModalAction
   };
 }

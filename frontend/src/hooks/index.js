@@ -1,2 +1,2 @@
 export { useApplicationData } from './useApplicationData/useApplicationData';
-export { usePhotoDetailsModalController } from './usePhotoDetailsModalController/usePhotoDetailsModalController';
+export { useModalControllers } from './useModalControllers/useModalControllers';

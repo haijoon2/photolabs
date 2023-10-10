@@ -1,5 +1,8 @@
 import React, { createContext, useContext } from "react";
-import { useApplicationData, usePhotoDetailsModalController } from 'hooks';
+import {
+  useApplicationData,
+  useModalControllers
+} from 'hooks';
 
 const AppContext = createContext();
 
@@ -13,13 +16,16 @@ export const AppContextProvider = ({ children }) => {
     fetchPhotosByTopicAction
   } = useApplicationData();
 
-  /* ------------------------ Details modal controller ------------------------ */
+  /* ---------------------------- Modal controllers --------------------------- */
   const {
     selectedPhoto,
     isDetailsModalOpen,
+    isFavoritesModalOpen,
     openPhotoDetailsModalAction,
-    closePhotoDetailsModalAction
-  } = usePhotoDetailsModalController();
+    closePhotoDetailsModalAction,
+    openFavoritesModalAction,
+    closeFavoritesModalAction
+  } = useModalControllers();
 
   return (
     <AppContext.Provider
@@ -34,8 +40,11 @@ export const AppContextProvider = ({ children }) => {
         // PhotoDetailsModal related
         selectedPhoto,
         isDetailsModalOpen,
+        isFavoritesModalOpen,
         openPhotoDetailsModalAction,
-        closePhotoDetailsModalAction
+        closePhotoDetailsModalAction,
+        openFavoritesModalAction,
+        closeFavoritesModalAction
       }}
     >
       {children}

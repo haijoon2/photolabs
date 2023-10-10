@@ -1,6 +1,8 @@
 import {
   OPEN_PHOTO_DETAILS_MODAL,
-  CLOSE_PHOTO_DETAILS_MODAL
+  CLOSE_PHOTO_DETAILS_MODAL,
+  OPEN_FAVORITES_MODAL,
+  CLOSE_FAVORITES_MODAL
 } from './constants';
 
 export const reducer = (state, action) => {
@@ -20,6 +22,18 @@ export const reducer = (state, action) => {
     case CLOSE_PHOTO_DETAILS_MODAL: {
       nextState.selectedPhoto = null;
       nextState.isDetailsModalOpen = false;
+
+      break;
+    }
+
+    case OPEN_FAVORITES_MODAL: {
+      nextState.isFavoritesModalOpen = true;
+
+      break;
+    }
+
+    case CLOSE_FAVORITES_MODAL: {
+      nextState.isFavoritesModalOpen = false;
 
       break;
     }

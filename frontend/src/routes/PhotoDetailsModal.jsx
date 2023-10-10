@@ -35,7 +35,6 @@ const PhotoDetailsModal = () => {
           <div className="photo-details-modal__top-bar">
             <header className="photo-details-modal__header">
               <PhotoFavButton 
-                id={id}
                 selected={favorites[id]}
                 onClickFavoriteIcon={() => {
                   toggleFavoriteAction(id);

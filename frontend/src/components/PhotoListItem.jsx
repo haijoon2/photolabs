@@ -15,7 +15,6 @@ const PhotoListItem = ({
       onClick={onClickPhoto}
     >
       <PhotoFavButton
-        id={photo.id}
         selected={selected}
         onClickFavoriteIcon={onClickFavoriteIcon}  
       />

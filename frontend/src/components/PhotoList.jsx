@@ -1,31 +1,35 @@
 import React from "react";
 import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
-
-const noop = () => {};
+import { useAppContext } from 'AppContextProvider';
 
 const PhotoList = ({
-  photos,
-  favorites,
+  photosToDisplay,
   // prevents onClick related photos when on details modal
-  disableDetailsModalOpen,
-  handleToggleFavorite,
-  handleOpenDetailsModal
+  disableDetailsModalOpen
 }) => {
+  const {
+    photos,
+    favorites,
+    toggleFavoriteAction,
+    openPhotoDetailsModalAction
+  } = useAppContext();
+
   return (
     <ul className="photo-list">
-      {photos.map((photo, index) => (
+      {/* do not render photos from the context when given from the parent */}
+      {(photosToDisplay || photos).map((photo, index) => (
         <PhotoListItem
           key={index}
           photo={photo}
           selected={favorites[photo.id]}
           onClickFavoriteIcon={(event) => {
             event.stopPropagation()
-            handleToggleFavorite(photo.id);
+            toggleFavoriteAction(photo.id);
           }}
           onClickPhoto={() => {
             if (!disableDetailsModalOpen) {
-              handleOpenDetailsModal(photo);
+              openPhotoDetailsModalAction(photo);
             }
           }}
         />

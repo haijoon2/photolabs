@@ -2,11 +2,11 @@ import React from "react";
 
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
+import { useAppContext } from 'AppContextProvider';
 
-const TopicList = ({
-  topics,
-  handleFetchPhotosByTopic
-}) => {
+const TopicList = () => {
+  const { topics, fetchPhotosByTopicAction } = useAppContext();
+
   return (
     <div className="top-nav-bar__topic-list">
       {topics.map((topic) => (
@@ -14,7 +14,7 @@ const TopicList = ({
           key={topic.id}
           title={topic.title}
           onClickTopic={() => {
-            handleFetchPhotosByTopic(topic.id);
+            fetchPhotosByTopicAction(topic.id);
           }}
         />
       ))}

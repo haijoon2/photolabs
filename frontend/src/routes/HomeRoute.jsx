@@ -1,35 +1,14 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-const HomeRoute = ({
-  photos,
-  topics,
-  favorites,
-  handleToggleFavorite,
-  handleOpenDetailsModal,
-  handleFetchPhotosByTopic,
-}) => {
-  const hasFavorite = useMemo(
-    () => Object.entries(favorites).some(([_, isFavorite]) => isFavorite),
-    [favorites]
-  );
-
+const HomeRoute = () => {
   return (
     <div className="home-route">
-      <TopNavigation
-        topics={topics}
-        hasFavorite={hasFavorite}
-        handleFetchPhotosByTopic={handleFetchPhotosByTopic}
-      />
-      <PhotoList
-        photos={photos}
-        favorites={favorites}
-        handleToggleFavorite={handleToggleFavorite}
-        handleOpenDetailsModal={handleOpenDetailsModal}
-      />
+      <TopNavigation />
+      <PhotoList />
     </div>
   );
 };

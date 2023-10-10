@@ -63,7 +63,7 @@ const PhotoDetailsModal = () => {
           </div>
           <div className="photo-details-modal__images">
             <PhotoList
-              photos={similar_photos}
+              photosToDisplay={similar_photos}
               disableDetailsModalOpen
             />
           </div>
